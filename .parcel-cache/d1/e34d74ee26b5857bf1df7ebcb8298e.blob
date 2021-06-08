@@ -1,0 +1,49 @@
+import   "5be931def026d8a896954aeb813aa9ae:core-js/stable";
+import   "5be931def026d8a896954aeb813aa9ae:regenerator-runtime/runtime";
+import   "5be931def026d8a896954aeb813aa9ae:./model.js";
+import   "5be931def026d8a896954aeb813aa9ae:./views/recipeView.js";
+import   "5be931def026d8a896954aeb813aa9ae:./views/searchView.js";
+import   "5be931def026d8a896954aeb813aa9ae:./views/resultsView.js";
+import   "5be931def026d8a896954aeb813aa9ae:./views/paginationView.js";
+const $5be931def026d8a896954aeb813aa9ae$var$controlRecipes = async function() {
+    try {
+        console.log("asas");
+        console.log(window);
+        console.log(window.location);
+        console.log(window.location.hash);
+        const id = window.location.hash.slice(1);
+        console.log(id);
+        if (!id) return;
+        $5be931def026d8a896954aeb813aa9ae$import$db3c59878a2ec187$9099ad97b570f7c.renderSpinner();
+        await $5be931def026d8a896954aeb813aa9ae$import$729f94da8f1824ff$e9bb34c12ee45abf(id);
+        console.log("Buraya geldi 0");
+        $5be931def026d8a896954aeb813aa9ae$import$db3c59878a2ec187$9099ad97b570f7c.render($5be931def026d8a896954aeb813aa9ae$import$729f94da8f1824ff$c837a8b98c265ae3.recipe);
+    } catch (err) {
+        $5be931def026d8a896954aeb813aa9ae$import$db3c59878a2ec187$9099ad97b570f7c.renderError("We could not find any recipe !! \n" + err);
+        console.error(err);
+    }
+};
+$5be931def026d8a896954aeb813aa9ae$var$controlRecipes();
+const $5be931def026d8a896954aeb813aa9ae$var$controlSearchResult = async function() {
+    try {
+        const query = $5be931def026d8a896954aeb813aa9ae$import$a55578fd3c642271$9099ad97b570f7c.getQuery();
+        if (!query) return;
+        await $5be931def026d8a896954aeb813aa9ae$import$729f94da8f1824ff$440e4272be8e4605(query);
+        console.log($5be931def026d8a896954aeb813aa9ae$import$729f94da8f1824ff$c837a8b98c265ae3.search.results);
+        $5be931def026d8a896954aeb813aa9ae$import$a3b1aa600613c84a$9099ad97b570f7c.render($5be931def026d8a896954aeb813aa9ae$import$729f94da8f1824ff$8ad71e4708b717bc());
+    } catch (err) {
+        console.error(err);
+    }
+};
+const $5be931def026d8a896954aeb813aa9ae$var$controlPagination = function(goToPage) {
+    $5be931def026d8a896954aeb813aa9ae$import$a3b1aa600613c84a$9099ad97b570f7c.render($5be931def026d8a896954aeb813aa9ae$import$729f94da8f1824ff$8ad71e4708b717bc(goToPage));
+    $5be931def026d8a896954aeb813aa9ae$import$1060d8bab8d0ca7e$9099ad97b570f7c.render($5be931def026d8a896954aeb813aa9ae$import$729f94da8f1824ff$c837a8b98c265ae3.search);
+};
+$5be931def026d8a896954aeb813aa9ae$var$controlPagination();
+function $5be931def026d8a896954aeb813aa9ae$var$init() {
+    $5be931def026d8a896954aeb813aa9ae$import$db3c59878a2ec187$9099ad97b570f7c.addHandlerRender($5be931def026d8a896954aeb813aa9ae$var$controlRecipes);
+    $5be931def026d8a896954aeb813aa9ae$import$a55578fd3c642271$9099ad97b570f7c.addHandlerRender($5be931def026d8a896954aeb813aa9ae$var$controlSearchResult);
+    $5be931def026d8a896954aeb813aa9ae$import$1060d8bab8d0ca7e$9099ad97b570f7c.addHandlerClick($5be931def026d8a896954aeb813aa9ae$var$controlPagination);
+}
+$5be931def026d8a896954aeb813aa9ae$var$controlSearchResult();
+$5be931def026d8a896954aeb813aa9ae$var$init();

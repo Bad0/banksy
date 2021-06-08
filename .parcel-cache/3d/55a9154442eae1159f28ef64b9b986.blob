@@ -1,0 +1,21 @@
+import   "78168ea11d8548f0e7af7f83959f4125:url:../../img/icons.svg";
+import   "78168ea11d8548f0e7af7f83959f4125:fractional";
+import   "78168ea11d8548f0e7af7f83959f4125:./View.js";
+class $78168ea11d8548f0e7af7f83959f4125$var$RecipeView extends $78168ea11d8548f0e7af7f83959f4125$import$bc564d5e62d693bc$9099ad97b570f7c {
+    _parentElement = document.querySelector(".recipe");
+    _generateMarkup() {
+        return `<figure class="recipe__fig">\n    <img src="${this._data.image}" alt="${this._data.title}" class="recipe__img" />\n    <h1 class="recipe__title">\n      <span>${this._data.title}</span>\n    </h1>\n  </figure>\n  \n  <div class="recipe__details">\n    <div class="recipe__info">\n      <svg class="recipe__info-icon">\n        <use href="${$78168ea11d8548f0e7af7f83959f4125$import$5e363e6f755f0684$9099ad97b570f7c}#icon-clock"></use>\n      </svg>\n      <span class="recipe__info-data recipe__info-data--minutes">${this._data.cookingTime}</span>\n      <span class="recipe__info-text">minutes</span>\n    </div>\n    <div class="recipe__info">\n      <svg class="recipe__info-icon">\n        <use href="${$78168ea11d8548f0e7af7f83959f4125$import$5e363e6f755f0684$9099ad97b570f7c}#icon-users"></use>\n      </svg>\n      <span class="recipe__info-data recipe__info-data--people">${this._data.servings}</span>\n      <span class="recipe__info-text">servings</span>\n  \n      <div class="recipe__info-buttons">\n        <button class="btn--tiny btn--increase-servings">\n          <svg>\n            <use href="src/img/icons.svg#icon-minus-circle"></use>\n          </svg>\n        </button>\n        <button class="btn--tiny btn--increase-servings">\n          <svg>\n            <use href="src/img/icons.svg#icon-plus-circle"></use>\n          </svg>\n        </button>\n      </div>\n    </div>\n  \n    <div class="recipe__user-generated">\n      <svg>\n        <use href="src/img/icons.svg#icon-user"></use>\n      </svg>\n    </div>\n    <button class="btn--round">\n      <svg class="">\n        <use href="src/img/icons.svg#icon-bookmark-fill"></use>\n      </svg>\n    </button>\n  </div>\n  \n  <div class="recipe__ingredients">\n    <h2 class="heading--2">Recipe ingredients</h2>\n    <ul class="recipe__ingredient-list">\n      ${this._data.ingredients.map(function(ing) {
+            return `\n        <li class="recipe__ingredient">\n          <svg class="recipe__icon">\n            <use href="src/img/icons.svg#icon-check"></use>\n          </svg>\n          <div class="recipe__quantity">${ing.quantity ? new $78168ea11d8548f0e7af7f83959f4125$import$afe0b0fc10cb7f39$2ced16407d18a1c7(ing.quantity).toString() : ""}</div>\n          <div class="recipe__description">\n            <span class="recipe__unit">${ing.unit}</span>\n            ${ing.description}\n          </div>\n        </li>`;
+        }).join("")}\n  \n      \n    </ul>\n  </div>\n  \n  <div class="recipe__directions">\n    <h2 class="heading--2">How to cook it</h2>\n    <p class="recipe__directions-text">\n      This recipe was carefully designed and tested by\n      <span class="recipe__publisher">${this._data.publisher}</span>. Please check out\n      directions at their website.\n    </p>\n    <a\n      class="btn--small recipe__btn"\n      href="${this._data.sourceUrl}"\n      target="_blank"\n    >\n      <span>Directions</span>\n      <svg class="search__icon">\n        <use href="src/img/icons.svg#icon-arrow-right"></use>\n      </svg>\n    </a>\n  </div>\n  -->`;
+    }
+    addHandlerRender(handler) {
+        [
+            "hashchange",
+            "load"
+        ].forEach(function(event) {
+            window.addEventListener(event, handler);
+        });
+    }
+}
+recipeVieww = new $78168ea11d8548f0e7af7f83959f4125$var$RecipeView();
+var $78168ea11d8548f0e7af7f83959f4125$export$9099ad97b570f7c = recipeVieww;

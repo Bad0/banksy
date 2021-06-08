@@ -1,0 +1,18 @@
+class $5cbd49d60a8f0e2d68b222bc0f939095$var$SearchView {
+    #parentEl = document.querySelector(".search");
+    getQuery() {
+        const val = this.#parentEl.querySelector(".search__field").value;
+        this.clearInput();
+        return val;
+    }
+    addHandlerRender(funct) {
+        this.#parentEl.addEventListener("submit", function(e) {
+            e.preventDefault();
+            funct();
+        });
+    }
+    clearInput() {
+        this.#parentEl.querySelector(".search__field").value = "";
+    }
+}
+var $5cbd49d60a8f0e2d68b222bc0f939095$export$9099ad97b570f7c = new $5cbd49d60a8f0e2d68b222bc0f939095$var$SearchView();

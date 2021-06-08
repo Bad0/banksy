@@ -1,0 +1,14 @@
+import   "d1f7ebc8d2a8688e62ce658c6e373504:./view.js";
+import   "d1f7ebc8d2a8688e62ce658c6e373504:url:../../img/icons.svg";
+class $d1f7ebc8d2a8688e62ce658c6e373504$var$resultsView extends $d1f7ebc8d2a8688e62ce658c6e373504$import$3a01e6f11c9abbf9$9099ad97b570f7c {
+    _parentElement = document.querySelector(".search-results");
+    _generateMarkup() {
+        console.log("aaa" + this._data);
+        const x = this._data.map(function(el) {
+            return `<li class="preview">\n        <a class="preview__link preview__link--active" href="#${el.id}">\n          <figure class="preview__fig">\n            <img src="${el.image}" alt="Test" />\n          </figure>\n          <div class="preview__data">\n            <h4 class="preview__title">${el.title}</h4>\n            <p class="preview__publisher">${el.publisher}</p>\n            <div class="preview__user-generated">\n              <svg>\n                <use href="${$d1f7ebc8d2a8688e62ce658c6e373504$import$5e363e6f755f0684$9099ad97b570f7c}#icon-user"></use>\n              </svg>\n            </div>\n          </div>\n        </a>\n      </li>`;
+        });
+        console.log(x);
+        return x;
+    }
+}
+var $d1f7ebc8d2a8688e62ce658c6e373504$export$9099ad97b570f7c = new $d1f7ebc8d2a8688e62ce658c6e373504$var$resultsView();

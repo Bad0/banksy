@@ -1,0 +1,57 @@
+import   "ed312710cbcd3865142989c85475c238:./config";
+import   "ed312710cbcd3865142989c85475c238:./helper.js";
+const $ed312710cbcd3865142989c85475c238$export$c837a8b98c265ae3 = {
+    recipe: {
+    },
+    search: {
+        query: "",
+        results: [],
+        page: 1,
+        resultsPerPage: $ed312710cbcd3865142989c85475c238$import$c2e114f4bd386737$6ca7b35c65413bfb
+    }
+};
+async function $ed312710cbcd3865142989c85475c238$export$e9bb34c12ee45abf(id) {
+    try {
+        const url = $ed312710cbcd3865142989c85475c238$import$c2e114f4bd386737$121552fae10d4c49 + id;
+        const data = await $ed312710cbcd3865142989c85475c238$import$502156b9dff0f98b$578f55a5d60842ba(url);
+        let recipee = data.data.recipe;
+        $ed312710cbcd3865142989c85475c238$export$c837a8b98c265ae3.recipe = {
+            id: recipee.id,
+            title: recipee.title,
+            publisher: recipee.publisher,
+            sourceUrl: recipee.source_url,
+            image: recipee.image_url,
+            servings: recipee.servings,
+            cookingTime: recipee.cooking_time,
+            ingredients: recipee.ingredients
+        };
+        console.log($ed312710cbcd3865142989c85475c238$export$c837a8b98c265ae3.recipe);
+    } catch (error) {
+        throw error;
+    }
+}
+async function $ed312710cbcd3865142989c85475c238$export$440e4272be8e4605(query) {
+    try {
+        $ed312710cbcd3865142989c85475c238$export$c837a8b98c265ae3.search.query = query;
+        const data = await $ed312710cbcd3865142989c85475c238$import$502156b9dff0f98b$578f55a5d60842ba(`${$ed312710cbcd3865142989c85475c238$import$c2e114f4bd386737$121552fae10d4c49}?search=${query}`);
+        if (!data) return;
+        $ed312710cbcd3865142989c85475c238$export$c837a8b98c265ae3.search.results = data.data.recipes.map(function(el) {
+            return {
+                id: el.id,
+                title: el.title,
+                publisher: el.publisher,
+                image: el.image_url
+            };
+        });
+        $ed312710cbcd3865142989c85475c238$export$c837a8b98c265ae3.search.page = 1;
+    } catch (err) {
+        throw new Error(err);
+    }
+}
+function $ed312710cbcd3865142989c85475c238$export$8ad71e4708b717bc(page = $ed312710cbcd3865142989c85475c238$export$c837a8b98c265ae3.search.page) {
+    $ed312710cbcd3865142989c85475c238$export$c837a8b98c265ae3.search.page = page;
+    const start = ($ed312710cbcd3865142989c85475c238$export$c837a8b98c265ae3.search.page - 1) * $ed312710cbcd3865142989c85475c238$export$c837a8b98c265ae3.search.resultsPerPage;
+    const end = $ed312710cbcd3865142989c85475c238$export$c837a8b98c265ae3.search.page * $ed312710cbcd3865142989c85475c238$export$c837a8b98c265ae3.search.resultsPerPage;
+    console.log("start-end", start, end);
+    return $ed312710cbcd3865142989c85475c238$export$c837a8b98c265ae3.search.results.slice(start, end);
+}

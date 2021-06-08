@@ -1,0 +1,26 @@
+import   "b2f8a3ddfb007233c51b0803013b9e4b:url:../../img/icons.svg";
+class $b2f8a3ddfb007233c51b0803013b9e4b$export$9099ad97b570f7c {
+    _data;
+    render(data) {
+        if (!data || Array.isArray(data) && data.length === 0) this.renderError("Data yok");
+        this._data = data;
+        console.log(data);
+        console.log("Parent: ", this._parentElement);
+        const markup = this._generateMarkup();
+        this._clear();
+        this._parentElement.insertAdjacentHTML("afterbegin", markup);
+    }
+    _clear() {
+        this._parentElement.innerHTML = "";
+    }
+    renderSpinner() {
+        const markup = `<div class="spinner">\n    <svg>\n      <use href="${$b2f8a3ddfb007233c51b0803013b9e4b$import$5e363e6f755f0684$9099ad97b570f7c}#icon-loader"></use>\n    </svg>\n  </div> \n  `;
+        this._parentElement.innerHTML = "";
+        this._parentElement.insertAdjacentHTML("afterbegin", markup);
+    }
+    renderError(message) {
+        const markup = `\n    <div class="error">\n            <div>\n              <svg>\n                <use href="${$b2f8a3ddfb007233c51b0803013b9e4b$import$5e363e6f755f0684$9099ad97b570f7c}#icon-alert-triangle"></use>\n              </svg>\n            </div>\n            <p>${message}</p>\n          </div> -->\n          `;
+        this._clear();
+        this._parentElement.insertAdjacentHTML("afterbegin", markup);
+    }
+}

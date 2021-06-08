@@ -1,0 +1,26 @@
+import   "088ef0d0b9638e2cc3afd1fb6ba1ccef:./view.js";
+class $088ef0d0b9638e2cc3afd1fb6ba1ccef$var$PaginationView extends $088ef0d0b9638e2cc3afd1fb6ba1ccef$import$3a01e6f11c9abbf9$9099ad97b570f7c {
+    _parentElement = document.querySelector(".pagination");
+    _generateMarkup() {
+        const curPage = this._data.page;
+        const numPages = Math.ceil(this._data.results.length / this._data.resultsPerPage);
+        console.log("Curpage ", curPage, numPages);
+        // Page 1, and there are other pages
+        if (curPage === 1 && numPages > 1) return `\n        <button data-goto="${curPage + 1}" class="btn--inline pagination__btn--next">\n          <span>Page ${curPage + 1}</span>\n          <svg class="search__icon">\n            <use href="${icons}#icon-arrow-right"></use>\n          </svg>\n        </button>\n      `;
+        // Last page
+        if (curPage === numPages && numPages > 1) return `\n        <button data-goto="${curPage - 1}" class="btn--inline pagination__btn--prev">\n          <svg class="search__icon">\n            <use href="${icons}#icon-arrow-left"></use>\n          </svg>\n          <span>Page ${curPage - 1}</span>\n        </button>\n      `;
+        // Other page
+        if (curPage < numPages) return `\n        <button data-goto="${curPage - 1}" class="btn--inline pagination__btn--prev">\n          <svg class="search__icon">\n            <use href="${icons}#icon-arrow-left"></use>\n          </svg>\n          <span>Page ${curPage - 1}</span>\n        </button>\n        <button data-goto="${curPage + 1}" class="btn--inline pagination__btn--next">\n          <span>Page ${curPage + 1}</span>\n          <svg class="search__icon">\n            <use href="${icons}#icon-arrow-right"></use>\n          </svg>\n        </button>\n      `;
+        // Page 1, and there are NO other pages
+        return "";
+    }
+    addHandlerClick(fonk) {
+        this._parentElement.addEventListener("click", function(e) {
+            const btn = e.target.closest(".btn--inline");
+            if (!btn) return;
+            const goToPage = +btn.dataset.goto;
+            fonk(goToPage);
+        });
+    }
+}
+var $088ef0d0b9638e2cc3afd1fb6ba1ccef$export$9099ad97b570f7c = new $088ef0d0b9638e2cc3afd1fb6ba1ccef$var$PaginationView();
